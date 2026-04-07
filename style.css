@@ -1,0 +1,161 @@
+/* style.css */
+
+/* 1. Atur Warna Dasar & Font */
+:root {
+    --bg-dark: #000000; /* Hitam pekat sesuai gambar */
+    --card-dark: #111111; /* Hitam sedikit terang untuk kartu utama */
+    --accent-orange: #FF5722; /* Warna oranye */
+    --accent-neon: #CCFF00; /* Warna hijau neon */
+    --text-main: #FFFFFF;
+    --text-muted: #888888;
+}
+/* Styling Navbar Custom */
+.nav-link-custom {
+    color: #888;
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 8px 15px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link-custom i {
+    font-size: 1rem;
+}
+
+/* Sembunyikan teks di layar kecil agar tidak penuh, cuma muncul ikon */
+@media (max-width: 576px) {
+    .nav-link-custom span { display: none; }
+    .nav-link-custom { padding: 10px; }
+}
+
+.nav-link-custom:hover, .nav-link-custom.active {
+    background-color: #222;
+    color: #fff;
+}
+
+/* Animasi untuk navbar agar melayang rapi saat di scroll */
+.sticky-top {
+    z-index: 1000;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif; /* Font modern */
+    overflow-x: hidden;
+}
+
+/* 2. Gaya Kartu Utama yang Mengambang */
+.main-wrapper {
+    background-color: var(--card-dark);
+    border-radius: 40px; /* Sudut melengkung besar di referensi */
+    padding: 60px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* 3. Gaya Kartu Profil (Putih) di Kiri */
+.profile-card {
+    background-color: #FFFFFF;
+    color: #000000;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-img-box {
+    background-color: var(--accent-orange);
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.profile-img-box img {
+    width: 100%;
+    filter: grayscale(100%); /* Efek hitam putih di referensi */
+}
+
+.social-icons i {
+    font-size: 1.2rem;
+    margin: 0 5px;
+    color: #333;
+}
+
+/* 4. Gaya Teks di Kanan */
+.hero-title {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.hero-subtitle {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #333; /* Warna gelap agar teks utama menonjol */
+}
+
+.hero-desc {
+    color: var(--text-muted);
+    max-width: 500px;
+    margin-bottom: 30px;
+}
+
+/* 5. Gaya Angka Statistik */
+.stat-item h3 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.stat-item p {
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+/* 6. Gaya Kartu Keahlian Kecil */
+.skill-box {
+    border-radius: 15px;
+    padding: 20px;
+    height: 120px;
+    position: relative;
+    color: #000;
+    font-weight: 600;
+}
+
+.skill-box.orange { background-color: var(--accent-orange); }
+.skill-box.neon { background-color: var(--accent-neon); }
+
+/* Tombol panah kecil di pojok kartu */
+.box-arrow {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 50%;
+    padding: 2px 5px;
+}
+
+/* 7. Gaya Pengalaman di Bawah */
+.exp-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 60px;
+}
+
+.exp-item {
+    border-bottom: 1px solid #222;
+    padding: 20px 0;
+    cursor: pointer;
+}
+
+.exp-item:hover { background-color: #1a1a1a; }
+
+.exp-year { color: var(--text-muted); font-size: 0.9rem; }
