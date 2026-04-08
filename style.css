@@ -101,8 +101,11 @@ body {
 }
 
 .hero-desc {
-    color: var(--text-muted);
-    max-width: 500px;
+    color: #bbbbbb; /* Abu-abu terang agar kontras dengan hitam */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: justify; /* Rata kanan kiri */
+    max-width: 600px; /* Supaya tidak terlalu lebar ke kanan */
     margin-bottom: 30px;
 }
 
@@ -151,9 +154,34 @@ body {
 }
 
 .exp-item {
-    border-bottom: 1px solid #222;
-    padding: 20px 0;
-    cursor: pointer;
+    border-bottom: 1px solid #333; /* Garis pembatas lebih tegas */
+    padding: 30px 0; /* Memberi ruang napas antar baris */
+    display: flex;
+    justify-content: space-between; /* Memaksa tahun ke pojok kanan */
+    align-items: flex-start; /* Sejajar dari atas */
+}
+
+.exp-info h5 {
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.exp-info p {
+    color: #c6c6c6; /* Warna deskripsi agar terlihat jelas */
+    font-size: 0.95rem;
+    text-align: justify; /* Rata kanan kiri untuk deskripsi pengalaman */
+    line-height: 1.5;
+}
+
+/* Tulisan Tahun di Pojok Kanan */
+.exp-year {
+    color: #FF5722; /* Beri warna aksen oranye biar stand out */
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap; /* Mencegah tahun turun ke baris baru */
+    text-align: right;
+    min-width: 100px;
 }
 
 .exp-item:hover { background-color: #1a1a1a; }
