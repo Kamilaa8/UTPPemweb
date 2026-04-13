@@ -1,71 +1,55 @@
-/* style.css */
-
-/* 1. Atur Warna Dasar & Font */
+/* --- GLOBAL CONFIGURATION --- */
 :root {
-    --bg-dark: #000000; /* Hitam pekat sesuai gambar */
-    --card-dark: #111111; /* Hitam sedikit terang untuk kartu utama */
-    --accent-orange: #FF5722; /* Warna oranye */
-    --accent-neon: #CCFF00; /* Warna hijau neon */
+    --bg-dark: #000000; 
+    --card-dark: #111111;
+    --accent-orange: #FF5722;
+    --accent-neon: #CCFF00;
     --text-main: #FFFFFF;
     --text-muted: #888888;
 }
-/* Styling Navbar Custom */
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
 .nav-link-custom {
     color: #888;
     text-decoration: none;
     font-size: 0.85rem;
     padding: 8px 15px;
     border-radius: 50px;
-    transition: all 0.3s ease;
+    transition: 0.3s ease;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.nav-link-custom i {
-    font-size: 1rem;
-}
-
-/* Sembunyikan teks di layar kecil agar tidak penuh, cuma muncul ikon */
-@media (max-width: 576px) {
-    .nav-link-custom span { display: none; }
-    .nav-link-custom { padding: 10px; }
-}
+.nav-link-custom i { font-size: 1rem; }
 
 .nav-link-custom:hover, .nav-link-custom.active {
     background-color: #222;
     color: #fff;
 }
 
-/* Animasi untuk navbar agar melayang rapi saat di scroll */
-.sticky-top {
-    z-index: 1000;
-}
+.sticky-top { z-index: 1000; }
 
-body {
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    font-family: 'Poppins', sans-serif; /* Font modern */
-    overflow-x: hidden;
-}
-
-/* 2. Gaya Kartu Utama yang Mengambang */
 .main-wrapper {
     background-color: var(--card-dark);
-    border-radius: 40px; /* Sudut melengkung besar di referensi */
+    border-radius: 40px;
     padding: 60px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin: 50px auto;
 }
 
-/* 3. Gaya Kartu Profil (Putih) di Kiri */
+/* --- HOME PAGE STYLES --- */
 .profile-card {
     background-color: #FFFFFF;
     color: #000000;
     border-radius: 20px;
     padding: 30px;
     text-align: center;
-    position: relative;
     overflow: hidden;
 }
 
@@ -78,7 +62,7 @@ body {
 
 .profile-img-box img {
     width: 100%;
-    filter: grayscale(100%); /* Efek hitam putih di referensi */
+    filter: grayscale(100%);
 }
 
 .social-icons i {
@@ -87,34 +71,22 @@ body {
     color: #333;
 }
 
-/* 4. Gaya Teks di Kanan */
-.hero-title {
+.hero-title, .hero-subtitle {
     font-size: 4rem;
     font-weight: 800;
     line-height: 1;
 }
 
-.hero-subtitle {
-    font-size: 4rem;
-    font-weight: 800;
-    color: #333; /* Warna gelap agar teks utama menonjol */
-}
-
 .hero-desc {
-    color: #bbbbbb; /* Abu-abu terang agar kontras dengan hitam */
-    font-size: 1.1rem;
+    color: #bbbbbb;
+    font-size: 0.8rem;
     line-height: 1.6;
-    text-align: justify; /* Rata kanan kiri */
-    max-width: 600px; /* Supaya tidak terlalu lebar ke kanan */
+    text-align: justify;
+    max-width: 600px;
     margin-bottom: 30px;
 }
 
-/* 5. Gaya Angka Statistik */
-.stat-item h3 {
-    font-size: 3rem;
-    font-weight: 700;
-}
-
+.stat-item h3 { font-size: 3rem; font-weight: 700; }
 .stat-item p {
     color: var(--text-muted);
     text-transform: uppercase;
@@ -122,7 +94,6 @@ body {
     letter-spacing: 1px;
 }
 
-/* 6. Gaya Kartu Keahlian Kecil */
 .skill-box {
     border-radius: 15px;
     padding: 20px;
@@ -131,11 +102,9 @@ body {
     color: #000;
     font-weight: 600;
 }
-
 .skill-box.orange { background-color: var(--accent-orange); }
 .skill-box.neon { background-color: var(--accent-neon); }
 
-/* Tombol panah kecil di pojok kartu */
 .box-arrow {
     position: absolute;
     bottom: 15px;
@@ -146,44 +115,111 @@ body {
     padding: 2px 5px;
 }
 
-/* 7. Gaya Pengalaman di Bawah */
-.exp-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-top: 60px;
-}
-
+.exp-title { font-size: 2.5rem; font-weight: 700; margin-top: 60px; }
 .exp-item {
-    border-bottom: 1px solid #333; /* Garis pembatas lebih tegas */
-    padding: 30px 0; /* Memberi ruang napas antar baris */
+    border-bottom: 1px solid #333;
+    padding: 30px 0;
     display: flex;
-    justify-content: space-between; /* Memaksa tahun ke pojok kanan */
-    align-items: flex-start; /* Sejajar dari atas */
+    justify-content: space-between;
 }
-
-.exp-info h5 {
-    color: #ffffff;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
-.exp-info p {
-    color: #c6c6c6; /* Warna deskripsi agar terlihat jelas */
-    font-size: 0.95rem;
-    text-align: justify; /* Rata kanan kiri untuk deskripsi pengalaman */
-    line-height: 1.5;
-}
-
-/* Tulisan Tahun di Pojok Kanan */
+.exp-item:hover { background-color: #1a1a1a; }
+.exp-info h5 { font-weight: 700; margin-bottom: 8px; }
+.exp-info p { color: #c6c6c6; font-size: 0.95rem; text-align: justify; line-height: 1.5; }
 .exp-year {
-    color: #FF5722; /* Beri warna aksen oranye biar stand out */
+    color: var(--accent-orange);
     font-weight: 600;
     font-size: 0.9rem;
-    white-space: nowrap; /* Mencegah tahun turun ke baris baru */
-    text-align: right;
     min-width: 100px;
+    text-align: right;
 }
 
-.exp-item:hover { background-color: #1a1a1a; }
+/* --- ABOUT PAGE STYLES --- */
+.fw-800 { font-weight: 800; }
+.text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px #ffffff;
+}
 
-.exp-year { color: var(--text-muted); font-size: 0.9rem; }
+.about-card { border-radius: 30px; }
+.bg-dark-soft { background-color: #111111; border: 1px solid #222; }
+.bg-neon { background-color: var(--accent-neon); }
+
+.spinning-logo { animation: rotate 10s linear infinite; }
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.text-neon { color: var(--accent-neon); }
+.text-orange { color: var(--accent-orange); }
+.text-justify { text-align: justify; }
+
+.mt-big { margin: 150px 0; }
+.text-upper-small {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888;
+    margin-bottom: -15px;
+    display: block;
+}
+
+.experimental-heading { margin-bottom: 100px; }
+
+.display-huge {
+    font-size: clamp(4rem, 12vw, 9rem);
+    font-weight: 800;
+    line-height: 0.85;
+    letter-spacing: -4px;
+}
+
+.text-outline-neon {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--accent-neon);
+}
+
+.text-tm { font-size: 1.2rem; font-weight: 800; vertical-align: super; }
+.section-typography { position: relative; margin-top: 80px; }
+
+.documentation-card {
+    border-radius: 20px;
+    overflow: hidden;
+    max-width: 300px;
+    background-color: #ffffff;
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+}
+
+.activity-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.activity-info { padding: 15px; }
+.activity-info h6 {
+    color: #000;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.activity-info p {
+    color: #555;
+    font-size: 0.75rem;
+    line-height: 1.4;
+}
+
+/* --- RESPONSIVENESS --- */
+@media (max-width: 991px) {
+    .display-huge { font-size: 5rem; }
+    .documentation-card { margin: 0 auto 20px auto; }
+}
+
+@media (max-width: 576px) {
+    .nav-link-custom span { display: none; }
+    .nav-link-custom { padding: 10px; }
+    .display-huge { font-size: 3.5rem; }
+    .main-wrapper { padding: 30px; }
+}

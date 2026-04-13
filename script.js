@@ -1,112 +1,107 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. FITUR DARK/LIGHT MODE ---
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-
-    themeToggle.addEventListener('click', () => {
-        // Menggunakan class toggle lebih aman daripada cek warna RGB
-        body.classList.toggle('light-theme');
-        
-        if (body.classList.contains('light-theme')) {
-            themeToggle.innerHTML = '<i class="fas fa-sun text-warning"></i>';
-            // Opsional: Paksa style manual jika CSS class belum dibuat
-            body.style.backgroundColor = '#ffffff';
-            body.style.color = '#000000';
-        } else {
-            themeToggle.innerHTML = '<i class="fas fa-moon text-warning"></i>';
-            body.style.backgroundColor = '#000000';
-            body.style.color = '#ffffff';
-        }
-    });
-
-    // --- 2. DATA PENGALAMAN ---
+    // --- 1. DATA PENGALAMAN (JSON Object) ---
     const dataPengalaman = {
         frontend: [
             { 
                 judul: "Asisten Dosen Algoritma Pemrograman", 
-                desc: "Membantu proses pembelajaran Python dan konsep algoritma, membimbing praktikum, serta membantu mahasiswa dalam memahami logika pemrograman dan penyelesaian masalah.", 
+                desc: "Membantu proses pembelajaran Python dan konsep algoritma, membimbing praktikum, serta membantu mahasiswa dalam memahami logika pemrograman.", 
                 tahun: "2026 - Aktif" 
             },
             { 
                 judul: "Sekretaris Biro Kesekretariatan Himakom", 
-                desc: "Mengelola administrasi organisasi, menyusun surat resmi dan laporan kegiatan, serta mengkoordinasikan dokumentasi dan arsip untuk mendukung kelancaran program kerja.", 
+                desc: "Mengelola administrasi organisasi, menyusun surat resmi, dan mengkoordinasikan dokumentasi untuk kelancaran program kerja.", 
                 tahun: "2026 - Aktif" 
             },
             { 
-                judul: "Coach AIESEC Future Leaders Winter Peak 2025", 
-                desc: "Membimbing peserta dalam pengembangan soft skills seperti leadership, komunikasi, dan teamwork, serta memfasilitasi diskusi dan aktivitas pengembangan diri.", 
+                judul: "Coach AIESEC Future Leaders 2025", 
+                desc: "Membimbing peserta dalam pengembangan soft skills seperti leadership, komunikasi, dan teamwork.", 
                 tahun: "2025"
             }
         ],
         uiux: [
             { 
-                judul: "Sertifikasi Figma Dasar", 
-                desc: "Menyelesaikan kursus online design system secara komprehensif untuk mendukung pembuatan antarmuka yang user-friendly.", 
-                tahun: "2023" 
+                judul: "UI App RELIS", 
+                desc: "Design aplikasi untuk mendaftarkan diri menjadi relawan tempat terjadinya bencana alam.", 
+                tahun: "2026",
+                link: "https://www.figma.com/proto/VZvvlKDemAaffYvea4Pv1g/Tugas-2-RPL-Figma-Desain-UI?t=NIS2TNP9I6ISfwFj-1"
             },
             { 
-                judul: "Redesign Web Kampus", 
-                desc: "Membuat prototype high-fidelity menggunakan Figma dengan fokus pada peningkatan user experience bagi mahasiswa.", 
-                tahun: "2023" 
+                judul: "Web Rekam Medis", 
+                desc: "Design sistem untuk menyimpan dan mengelola data kesehatan pasien secara digital.", 
+                tahun: "2025",
+                link: "https://www.figma.com/proto/fRzU5xHBZ5E9Qie9cjLlLI/Projek-Basis-Data-Sistem-Pencatatan-Rekam-Medis?node-id=0-1&t=NIS2TNP9I6ISfwFj-1"
             }
         ]
     };
 
-    // --- 3. RENDER PENGALAMAN (DOM MANIPULATION) ---
+    // --- 2. RENDER PENGALAMAN ---
     const skillBoxes = document.querySelectorAll('.skill-box');
     const expTitle = document.querySelector('.exp-title');
-    const expContainer = document.querySelector('.mt-5 .col-12');
+    const expContainer = document.querySelector('#experience-list'); 
 
     function renderExperience(kategori) {
-        // Hapus item lama
-        const currentItems = document.querySelectorAll('.exp-item');
-        currentItems.forEach(item => item.remove());
+        if (!expContainer) return;
 
-        // Ambil data
+        // Kosongkan container
+        expContainer.innerHTML = '';
+
+        // Pilih data
         const listData = (kategori === 'orange') ? dataPengalaman.frontend : dataPengalaman.uiux;
-        expTitle.innerHTML = (kategori === 'orange') ? "EXPERIENCES" : "PROJECT UI/UX";
+        
+        if (expTitle) {
+            expTitle.innerHTML = (kategori === 'orange') ? "EXPERIENCES" : "PROJECT UI/UX";
+        }
 
-        // Buat elemen baru
+        // Render item
         listData.forEach(data => {
             const expItem = document.createElement('div');
-            expItem.className = 'exp-item'; // Class CSS yang sudah kita perbaiki tadi
-            expItem.style.opacity = 0;
-
-            // STRUKTUR BARU: Menggunakan exp-info agar sejajar dan rata kanan-kiri
-            expItem.innerHTML = `
+            expItem.className = 'exp-item';
+            
+            // Cek apakah ada link, kalau ada bungkus dengan tag <a>, kalau tidak biarkan teks biasa
+            const content = `
                 <div class="exp-info">
                     <h5>${data.judul}</h5>
                     <p>${data.desc}</p>
                 </div>
                 <div class="exp-year">${data.tahun}</div>
             `;
-            
-            expContainer.appendChild(expItem);
 
-            // Animasi Fade-in
-            setTimeout(() => {
-                expItem.style.transition = 'all 0.5s ease';
-                expItem.style.opacity = 1;
-            }, 50);
+            // Jika ada link, bungkus innerHTML-nya
+            if (data.link) {
+                expItem.innerHTML = `<a href="${data.link}" target="_blank" style="text-decoration: none; color: inherit; display: flex; width: 100%; justify-content: space-between;">${content}</a>`;
+                expItem.style.cursor = "pointer";
+            } else {
+                expItem.innerHTML = content;
+            }
+
+            expContainer.appendChild(expItem);
         });
     }
 
-    // --- 4. EVENT LISTENERS ---
+    // --- 3. EVENT LISTENERS SKILL BOX (Home Page) ---
     skillBoxes.forEach(box => {
         box.addEventListener('click', () => {
-            // Tambahkan sedikit feedback klik (skala kecil)
+            // Animasi klik tipis
             box.style.transform = 'scale(0.95)';
             setTimeout(() => box.style.transform = 'scale(1)', 100);
 
-            if (box.classList.contains('orange')) {
-                renderExperience('orange');
-            } else {
-                renderExperience('neon');
-            }
+            const kategori = box.classList.contains('orange') ? 'orange' : 'neon';
+            renderExperience(kategori);
         });
     });
 
-    // Jalankan pertama kali
+    // --- 4. SIMPLE GALLERY INTERACTION (About Page) ---
+    const docCards = document.querySelectorAll('.documentation-card');
+
+    docCards.forEach(card => {
+        card.addEventListener('click', () => {
+            // Hanya tambah shadow tanpa merusak rotasi/layout
+            docCards.forEach(c => c.style.boxShadow = 'none');
+            card.style.boxShadow = '0 0 20px rgba(204, 255, 0, 0.4)';
+        });
+    });
+
+    // Jalankan default render
     renderExperience('orange');
 });
