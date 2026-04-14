@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-black text-white">
-
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top mt-3">
         <div class="container justify-content-center">
             <div class="bg-dark p-2 rounded-pill shadow d-flex gap-2 align-items-center px-4" style="border: 1px solid #333;">
@@ -18,47 +17,61 @@
                 <a class="nav-link-custom" href="about.html"><i class="fas fa-user"></i> <span>About</span></a>
                 <a class="nav-link-custom" href="skills.html"><i class="fas fa-code"></i> <span>Skills</span></a>
                 <a class="nav-link-custom active" href="projects.html"><i class="fas fa-briefcase"></i> <span>Projects</span></a>
-                <a class="nav-link-custom" href="contact.html"><i class="fas fa-envelope"></i> <span>Contact</span></a>
+                <a class="nav-link-custom" href="contact.html"><i class="fas fa-envelope"></i> <span>Contact</span></a>                
             </div>
         </div>
     </nav>
 
-    <div class="container mt-5 pt-2">
-        <h1 class="display-3 fw-800 text-neon mb-5 text-center">My Projects</h1>
-        
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
+    <div class="container mt-5">
+        <div class="row align-items-start">
+            
+            <div class="col-md-3 d-none d-md-block">
+                <div class="vertical-title-wrapper">
+                    <div class="vertical-column text-white">
+                        M<br>Y
+                    </div>
+                    <div class="vertical-column text-neon column-projects">
+                        P<br>R<br>O<br>J<br>E<br>C<br>T<br>S
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 d-md-none text-center mb-4">
+                <h1 class="display-3 fw-800 text-neon">My Projects</h1>
+            </div>
+
+            <div class="col-md-9">
                 <div class="stack-area-central">
                     
                     <div class="folder-card-full bg-neon active" data-project="relis">
-                        <div class="folder-tab">DESIGN APP </div>
+                        <div class="folder-tab">DESIGN APP</div>
                         <h2 class="folder-title">RELIS : App Relawan Bencana Alam</h2>
                         <div class="folder-inner-content">
                             <div class="row align-items-center g-4">
                                 <div class="col-md-5">
-                                    <img src="assets/relis.jpg" class="img-fluid rounded-3 border border-dark" alt="NASA">
+                                    <img src="assets/relis.jpg" class="img-fluid rounded-3 border border-dark" alt="Relis App">
                                 </div>
                                 <div class="col-md-7">
                                     <span class="badge bg-black text-neon mb-3">UI/UX FIGMA DESIGN</span>
-                                    <p class="text-in-folder">Aplikasi ini merupakan website yang menyediakan informasi bencana alam secara real-time di sekitar pengguna. Selain itu, pengguna juga dapat mendaftarkan diri sebagai relawan untuk berpartisipasi dalam penanggulangan bencana secara cepat dan terkoordinasi.</p>
-                                    <a href="https://www.figma.com/proto/VZvvlKDemAaffYvea4Pv1g/Tugas-2-RPL-Figma-Desain-UI?t=NIS2TNP9I6ISfwFj-1%22" target="_blank" class="btn btn-dark btn-sm rounded-pill px-4">Figma link <i class="fab fa-github"></i></a>
+                                    <p class="text-in-folder">Aplikasi website real-time untuk informasi bencana alam. Memungkinkan koordinasi relawan secara cepat di lokasi bencana.</p>
+                                    <a href="https://www.figma.com/proto/VZvvlKDemAaffYvea4Pv1g/Tugas-2-RPL-Figma-Desain-UI" target="_blank" class="btn btn-dark btn-sm rounded-pill px-4">Figma link <i class="fab fa-figma"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="folder-card-full bg-white text-black" data-project="rekam-medis">
+                    <div class="folder-card-full bg-white text-black" data-project="nasa">
                         <div class="folder-tab text-black">DESIGN WEB</div>
-                        <h2 class="folder-title">Website rekam medis</h2>
+                        <h2 class="folder-title">Website Rekam Medis</h2>
                         <div class="folder-inner-content">
                             <div class="row align-items-center g-4">
                                 <div class="col-md-5">
-                                    <img src="assets/rekam-medis.jpg" class="img-fluid rounded-3 border" alt="Design system">
+                                    <img src="assets/rekam-medis.jpg" class="img-fluid rounded-3 border" alt="rekam-medis poto">
                                 </div>
-                                <div class="col-md-7 text-black">
-                                    <span class="badge bg-dark text-white mb-3">UI/UX FIGMA DESIGN</span>
-                                    <p class="text-in-folder">Protoype design untuk sistem rekam medis sebuah rumah sakit untuk efisiensi pengelolaan riwayat kesehatan secara terpusat yang memiliki tiga user, yaitu Pasien Dokter dan Admin.</p>
-                                    <a href="https://www.figma.com/proto/fRzU5xHBZ5E9Qie9cjLlLI/Projek-Basis-Data-Sistem-Pencatatan-Rekam-Medis?node-id=0-1&t=NIS2TNP9I6ISfwFj-1%22" target="_blank" class="btn btn-dark btn-sm rounded-pill px-4">Figma link <i class="fab fa-github"></i></a>
+                                <div class="col-md-7">
+                                    <span class="badge bg-dark text-white mb-3">FIGMA - MYSQL</span>
+                                    <p class="text-in-folder">Design system Web Rekam Medis ini dirancang untuk mendukung pengelolaan data kesehatan secara terstruktur dan terintegrasi dengan database. Sistem ini digunakan oleh pasien, dokter, dan admin untuk mengakses, mencatat, serta mengelola informasi medis secara efisien dan aman.</p>
+                                    <a href="https://www.figma.com/proto/fRzU5xHBZ5E9Qie9cjLlLI/Projek-Basis-Data-Sistem-Pencatatan-Rekam-Medis?node-id=2097-3747&t=NIS2TNP9I6ISfwFj-1%22" target="_blank" class="btn btn-dark btn-sm rounded-pill px-4">Figma link <i class="fab fa-figma"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -66,15 +79,15 @@
 
                     <div class="folder-card-full bg-neon" data-project="badminton">
                         <div class="folder-tab">SYSTEM</div>
-                        <h2 class="folder-title">Badminton reservation</h2>
+                        <h2 class="folder-title">Badminton Reservation</h2>
                         <div class="folder-inner-content">
                             <div class="row align-items-center g-4">
                                 <div class="col-md-5">
-                                    <img src="assets/badminton.jpg" class="img-fluid rounded-3 border border-dark" alt="Badminton">
+                                    <img src="assets/badminton.jpg" class="img-fluid rounded-3 border border-dark" alt="Badminton System">
                                 </div>
                                 <div class="col-md-7">
-                                    <span class="badge bg-black text-neon mb-3"></span>
-                                    <p class="text-in-folder">Sistem pemesanan lapangan badminton ini merupakan aplikasi berbasis Java yang dikembangkan melalui Apache NetBeans. Aplikasi ini terhubung dengan database MySQL (melalui phpMyAdmin) untuk mengelola data pengguna, jadwal lapangan, serta proses pemesanan secara terstruktur.</p>
+                                    <span class="badge bg-black text-neon mb-3">JAVA - MYSQL</span>
+                                    <p class="text-in-folder">Sistem pemesanan lapangan berbasis Java Desktop dengan database MySQL untuk manajemen jadwal yang terstruktur.</p>
                                 </div>
                             </div>
                         </div>
