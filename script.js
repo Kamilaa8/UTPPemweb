@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. DATA PENGALAMAN (JSON Object) ---
+    // --- 1. DATA PENGALAMAN (Untuk Halaman Index/Home) ---
     const dataPengalaman = {
         frontend: [
             { 
@@ -24,18 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 judul: "UI App RELIS", 
                 desc: "Design aplikasi untuk mendaftarkan diri menjadi relawan tempat terjadinya bencana alam.", 
                 tahun: "2026",
-                link: "https://www.figma.com/proto/VZvvlKDemAaffYvea4Pv1g/Tugas-2-RPL-Figma-Desain-UI?t=NIS2TNP9I6ISfwFj-1"
             },
             { 
                 judul: "Web Rekam Medis", 
                 desc: "Design sistem untuk menyimpan dan mengelola data kesehatan pasien secara digital.", 
-                tahun: "2025",
-                link: "https://www.figma.com/proto/fRzU5xHBZ5E9Qie9cjLlLI/Projek-Basis-Data-Sistem-Pencatatan-Rekam-Medis?node-id=0-1&t=NIS2TNP9I6ISfwFj-1"
+                tahun: "2025"
             }
         ]
     };
 
-    // --- 2. RENDER PENGALAMAN ---
+    // --- 2. RENDER PENGALAMAN (Home Page) ---
     const skillBoxes = document.querySelectorAll('.skill-box');
     const expTitle = document.querySelector('.exp-title');
     const expContainer = document.querySelector('#experience-list'); 
@@ -43,22 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderExperience(kategori) {
         if (!expContainer) return;
 
-        // Kosongkan container
         expContainer.innerHTML = '';
-
-        // Pilih data
         const listData = (kategori === 'orange') ? dataPengalaman.frontend : dataPengalaman.uiux;
         
         if (expTitle) {
             expTitle.innerHTML = (kategori === 'orange') ? "EXPERIENCES" : "PROJECT UI/UX";
         }
 
-        // Render item
         listData.forEach(data => {
             const expItem = document.createElement('div');
             expItem.className = 'exp-item';
             
-            // Cek apakah ada link, kalau ada bungkus dengan tag <a>, kalau tidak biarkan teks biasa
             const content = `
                 <div class="exp-info">
                     <h5>${data.judul}</h5>
@@ -67,10 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="exp-year">${data.tahun}</div>
             `;
 
-            // Jika ada link, bungkus innerHTML-nya
-            if (data.link) {
-                expItem.innerHTML = `<a href="${data.link}" target="_blank" style="text-decoration: none; color: inherit; display: flex; width: 100%; justify-content: space-between;">${content}</a>`;
-                expItem.style.cursor = "pointer";
+            if (kategori === 'neon') {
+                expItem.style.cursor = 'pointer';
+                expItem.innerHTML = `<a href="projects.html" style="text-decoration: none; color: inherit; display: flex; width: 100%; justify-content: space-between;">${content}</a>`;
             } else {
                 expItem.innerHTML = content;
             }
@@ -82,26 +74,48 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 3. EVENT LISTENERS SKILL BOX (Home Page) ---
     skillBoxes.forEach(box => {
         box.addEventListener('click', () => {
-            // Animasi klik tipis
             box.style.transform = 'scale(0.95)';
             setTimeout(() => box.style.transform = 'scale(1)', 100);
-
             const kategori = box.classList.contains('orange') ? 'orange' : 'neon';
             renderExperience(kategori);
         });
     });
 
-    // --- 4. SIMPLE GALLERY INTERACTION (About Page) ---
+    // --- 4. GALLERY INTERACTION (About Page) ---
     const docCards = document.querySelectorAll('.documentation-card');
-
     docCards.forEach(card => {
         card.addEventListener('click', () => {
-            // Hanya tambah shadow tanpa merusak rotasi/layout
             docCards.forEach(c => c.style.boxShadow = 'none');
             card.style.boxShadow = '0 0 20px rgba(204, 255, 0, 0.4)';
         });
     });
 
-    // Jalankan default render
-    renderExperience('orange');
+    // --- 5. FOLDER STACK INTERACTION (Projects Page) ---
+    const folders = document.querySelectorAll('.folder-card-full');
+
+    if (folders.length > 0) {
+        folders.forEach((folder, index) => {
+            // Berikan z-index awal berdasarkan urutan
+            folder.style.zIndex = index;
+
+            folder.addEventListener('click', () => {
+                const isActive = folder.classList.contains('active');
+
+                // Reset semua folder
+                folders.forEach((f, i) => {
+                    f.classList.remove('active');
+                    f.style.zIndex = i;
+                });
+
+                // Jika yang diklik belum aktif, buka dan naikkan ke paling depan
+                if (!isActive) {
+                    folder.classList.add('active');
+                    folder.style.zIndex = "999";
+                }
+            });
+        });
+    }
+
+    // --- 6. INITIALIZATION ---
+    if (expContainer) renderExperience('orange');
 });
