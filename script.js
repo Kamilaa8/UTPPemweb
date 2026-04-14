@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 expItem.style.cursor = 'pointer';
                 expItem.innerHTML = `<a href="projects.html" style="text-decoration: none; color: inherit; display: flex; width: 100%; justify-content: space-between;">${content}</a>`;
             } else {
-                expItem.innerHTML = content;
+                expItem.innerHTML = `<a href="about.html" style="text-decoration: none; color: inherit; display: flex; width: 100%; justify-content: space-between;">${content}</a>`;
             }
 
             expContainer.appendChild(expItem);
